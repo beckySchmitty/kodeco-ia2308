@@ -44,15 +44,15 @@ struct colorSlider: View {
           .foregroundColor(Color("TextColor"))
           .padding()
         HStack {
-          Slider(value: $color, in: 0...255)
+          Slider(value: $color, in: 0...Constants.General.colorMaxValue)
             .accentColor(colorTint)
           Text("\(Int(color.rounded()))")
+            .font(.title3)
             .foregroundColor(Color("TextColor"))
         }
         
       }
 //      .padding()
-      
     }
 }
 

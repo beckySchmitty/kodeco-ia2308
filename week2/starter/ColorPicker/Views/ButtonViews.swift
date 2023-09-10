@@ -32,7 +32,7 @@
 
 import SwiftUI
 
-// button used on main color picker screen
+// Text for button used on main color picker screen
 struct ButtonText: View {
   var text: String
   var color: String
@@ -41,12 +41,13 @@ struct ButtonText: View {
 
       Text(text)
         .font(.title3)
+        .bold()
         .foregroundColor(.white)
-        .frame(width: 100, height: 50)
+        .frame(width: Constants.General.buttonTextWidth, height: Constants.General.buttonTextHeight)
         .background(Color(color))
-        .cornerRadius(15)
+        .cornerRadius(Constants.General.buttonCornerRadius)
         .overlay(
-          RoundedRectangle(cornerRadius: 10)
+          RoundedRectangle(cornerRadius: Constants.General.buttonCornerRadius)
             .stroke(Color(.white), lineWidth: 3)
         )
     }
@@ -57,9 +58,4 @@ struct ButtonViews_Previews: PreviewProvider {
       ButtonText(text: "Set Color", color: "BlueButtonColor")
     }
 }
-
-
-//RoundedRectangle(cornerRadius: 20)
-//  .strokeBorder(Color(.white), lineWidth: 5)
-//  .frame(width: 100, height: 50)
 

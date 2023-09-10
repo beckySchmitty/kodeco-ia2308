@@ -37,6 +37,13 @@ enum Constants {
     public static let colorMaxValue = CGFloat(255)
     public static let colorRectBoarderWidth = CGFloat(8)
     public static let contentViewPadding = CGFloat(20)
+    public static let buttonCornerRadius = CGFloat(20)
+    public static let buttonTextWidth = CGFloat(110)
+    public static let buttonTextHeight = CGFloat(60)
+
+    
+    
+
 
   }
 }

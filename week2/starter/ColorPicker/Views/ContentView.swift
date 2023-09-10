@@ -37,13 +37,14 @@ struct ContentView: View {
   @State private var redColor: Double = 0.0
   @State private var greenColor: Double = 0.0
   @State private var blueColor: Double = 0.0
-  @State private var foregroundColor = Color(red: 0.98, green: 0.39, blue: 0.19)
+  @State private var foregroundColor = Color(red: 0.0, green: 0.0, blue: 0.0)
+  
   @Environment(\.verticalSizeClass) var verticalSizeClass
   @Environment(\.horizontalSizeClass) var horizontalSizeClass
   
   var body: some View {
 
-    if (verticalSizeClass == .compact && horizontalSizeClass == .regular) {
+    if (verticalSizeClass == .regular && horizontalSizeClass == .compact) {
         // horizontal (portrait) orientation
       ZStack {
         VStack {
@@ -79,65 +80,53 @@ struct ContentView: View {
       .background(Color("BackgroundColor"))
 
     } else {
-        // landscape orientation
-      HStack {
-        Text("one")
-      }
-      HStack {
-        Text("two")
+      // landscape orientation
+        HStack {
+          VStack {
+            Text("Color Picker")
+              .font(.largeTitle)
+              .foregroundColor(Color("TextColor"))
+              .bold()
+            RoundedRectangle(cornerRadius: 0)
+              .foregroundColor(foregroundColor)
+              .border(.black)
+              .overlay(
+                RoundedRectangle(cornerRadius: 0)
+                  .stroke(Color.brown, lineWidth: Constants.General.colorRectBoarderWidth)
+              )
+              .padding(.bottom)
+          }
+          VStack {
+            
+            HStack {
+              colorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))
+            }
+            HStack {
+              colorSlider(color: $greenColor, colorName: "Green", colorTint: Color(.systemGreen))
+            }
+            HStack {
+              colorSlider(color: $blueColor, colorName: "Blue", colorTint: Color(.systemBlue))
+            }
+            Button {
+              foregroundColor = Color(red: redColor / Constants.General.colorMaxValue, green: greenColor / Constants.General.colorMaxValue, blue: blueColor / Constants.General.colorMaxValue)
+            } label: {
+              ButtonText(text: "Set Color", color: "BlueButtonColor")
+            }
+          }
+          .padding(Constants.General.contentViewPadding)
+          .padding(.bottom)
+        }
+        .padding(Constants.General.contentViewPadding)
       }
     }
-                
-  }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
-      .previewInterfaceOrientation(.landscapeRight)
     ContentView()
       .preferredColorScheme(.dark)
+    ContentView()
+      .previewInterfaceOrientation(.landscapeRight)
   }
 }
-
-
-//TODO tomorrow
-//boarder
-//extract sliders
-//magic numbers
-
-
-
-//// landscape orientation
-//ZStack {
-//VStack {
-//  Text("Color Picker")
-//    .font(.largeTitle)
-//    .foregroundColor(Color("TextColor"))
-//    .bold()
-//  RoundedRectangle(cornerRadius: 0)
-//    .foregroundColor(foregroundColor)
-//    .border(.black)
-//    .overlay(
-//      RoundedRectangle(cornerRadius: 0)
-//        .stroke(Color.brown, lineWidth: Constants.General.colorRectBoarderWidth)
-//    )
-//    .padding(.bottom)
-//  VStack {
-//    colorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))
-//  }
-//  VStack {
-//    colorSlider(color: $greenColor, colorName: "Green", colorTint: Color(.systemGreen))
-//  }
-//  VStack {
-//    colorSlider(color: $blueColor, colorName: "Blue", colorTint: Color(.systemBlue))
-//  }
-//  Button {
-//    foregroundColor = Color(red: redColor / Constants.General.colorMaxValue, green: greenColor / Constants.General.colorMaxValue, blue: blueColor / Constants.General.colorMaxValue)
-//  } label: {
-//    ButtonText(text: "Set Color", color: "BlueButtonColor")
-//  }
-//}
-//}
-//.padding(Constants.General.contentViewPadding)
-//.background(Color("BackgroundColor"))

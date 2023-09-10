@@ -32,6 +32,7 @@
 
 import SwiftUI
 
+// button used on main color picker screen
 struct ButtonText: View {
   var text: String
   var color: String
@@ -39,6 +40,7 @@ struct ButtonText: View {
     var body: some View {
 
       Text(text)
+        .font(.title3)
         .foregroundColor(.white)
         .frame(width: 100, height: 50)
         .background(Color(color))

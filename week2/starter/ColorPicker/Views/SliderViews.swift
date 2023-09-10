@@ -30,13 +30,34 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
+import SwiftUI
 
-enum Constants {
-  enum General {
-    public static let colorMaxValue = CGFloat(255)
-    public static let colorRectBoarderWidth = CGFloat(8)
-    public static let contentViewPadding = CGFloat(20)
+struct colorSlider: View {
+  @Binding var color: Double
+  var colorName: String
+  var colorTint: Color
 
-  }
+    var body: some View {
+      VStack {
+        Text(colorName)
+          .font(.title3)
+          .foregroundColor(Color("TextColor"))
+          .padding()
+        HStack {
+          Slider(value: $color, in: 0...255)
+            .accentColor(colorTint)
+          Text("\(Int(color.rounded()))")
+            .foregroundColor(Color("TextColor"))
+        }
+        
+      }
+//      .padding()
+      
+    }
+}
+
+struct SliderViews_Previews: PreviewProvider {
+    static var previews: some View {
+      colorSlider(color: Binding.constant(90), colorName: "Red", colorTint: Color(.systemRed))
+    }
 }

@@ -53,11 +53,7 @@ struct ContentView: View {
             .bold()
           RoundedRectangle(cornerRadius: 0)
             .foregroundColor(foregroundColor)
-            .border(.black)
-            .overlay(
-              RoundedRectangle(cornerRadius: 0)
-                .stroke(Color.brown, lineWidth: Constants.General.colorRectBoarderWidth)
-            )
+            .border(Color.brown, width: Constants.General.colorRectBoarderWidth)
             .padding(.bottom)
           VStack {
             ColorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))

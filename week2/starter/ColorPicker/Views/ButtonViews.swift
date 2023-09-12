@@ -38,7 +38,6 @@ struct ButtonText: View {
   var color: String
 
     var body: some View {
-
       Text(text)
         .font(.title3)
         .bold()

@@ -46,7 +46,6 @@ struct ContentView: View {
 
     if (verticalSizeClass == .regular && horizontalSizeClass == .compact) {
         // horizontal (portrait) orientation
-      ZStack {
         VStack {
           Text("Color Picker")
             .font(.largeTitle)
@@ -61,13 +60,13 @@ struct ContentView: View {
             )
             .padding(.bottom)
           VStack {
-            colorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))
+            ColorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))
           }
           VStack {
-            colorSlider(color: $greenColor, colorName: "Green", colorTint: Color(.systemGreen))
+            ColorSlider(color: $greenColor, colorName: "Green", colorTint: Color(.systemGreen))
           }
           VStack {
-            colorSlider(color: $blueColor, colorName: "Blue", colorTint: Color(.systemBlue))
+            ColorSlider(color: $blueColor, colorName: "Blue", colorTint: Color(.systemBlue))
           }
           Button {
             foregroundColor = Color(red: redColor / Constants.General.colorMaxValue, green: greenColor / Constants.General.colorMaxValue, blue: blueColor / Constants.General.colorMaxValue)
@@ -75,7 +74,6 @@ struct ContentView: View {
             ButtonText(text: "Set Color", color: "BlueButtonColor")
           }
         }
-      }
       .padding(Constants.General.contentViewPadding)
       .background(Color("BackgroundColor"))
 
@@ -99,13 +97,13 @@ struct ContentView: View {
           VStack {
             
             HStack {
-              colorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))
+              ColorSlider(color: $redColor, colorName: "Red", colorTint: Color(.systemRed))
             }
             HStack {
-              colorSlider(color: $greenColor, colorName: "Green", colorTint: Color(.systemGreen))
+              ColorSlider(color: $greenColor, colorName: "Green", colorTint: Color(.systemGreen))
             }
             HStack {
-              colorSlider(color: $blueColor, colorName: "Blue", colorTint: Color(.systemBlue))
+              ColorSlider(color: $blueColor, colorName: "Blue", colorTint: Color(.systemBlue))
             }
             Button {
               foregroundColor = Color(red: redColor / Constants.General.colorMaxValue, green: greenColor / Constants.General.colorMaxValue, blue: blueColor / Constants.General.colorMaxValue)

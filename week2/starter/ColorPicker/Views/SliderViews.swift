@@ -32,7 +32,7 @@
 
 import SwiftUI
 
-struct colorSlider: View {
+struct ColorSlider: View {
   @Binding var color: Double
   var colorName: String
   var colorTint: Color
@@ -58,6 +58,6 @@ struct colorSlider: View {
 
 struct SliderViews_Previews: PreviewProvider {
     static var previews: some View {
-      colorSlider(color: Binding.constant(90), colorName: "Red", colorTint: Color(.systemRed))
+      ColorSlider(color: Binding.constant(90), colorName: "Red", colorTint: Color(.systemRed))
     }
 }
